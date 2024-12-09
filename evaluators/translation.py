@@ -45,7 +45,12 @@ class TranslationQualityEvaluator(LLMBasedEvaluator):
                 
             # Compute additional metrics if required
             if self.metrics_manager.enable_bleu_rouge:
-                pass
+                ind_extra_results, avg_extra_results = self.translate(data)
+                individual_results = [
+                    {**ind_res, "bleu": ind_bleu, "rouge_1": ind_rouge_1, "rouge_2": ind_rouge_2, "rouge_l": ind_rouge_l}
+                    for ind_res, ind_bleu, ind_rouge_1, ind_rouge_2, ind_rouge_l in zip(individual_results, ind_extra_results["bleu"], ind_extra_results["rouge_1"], ind_extra_results["rouge_2"], ind_extra_results["rouge_l"])
+                ]
+                overall_results.update(avg_extra_results)
 
             return {
                 "individual_results": individual_results,
