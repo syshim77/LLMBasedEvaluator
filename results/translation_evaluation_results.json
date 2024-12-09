@@ -1,0 +1,125 @@
+{
+    "individual_results": [
+        {
+            "input_text": "오늘 날씨가 정말 좋다.",
+            "translated_text": "The weather is really nice today.",
+            "quality": "high",
+            "evaluated_quality": "low",
+            "confidence": 0.8,
+            "bleu": 0.26269098944241587,
+            "rouge_1": 0.5454545404958678,
+            "rouge_2": 0.4444444395061729,
+            "rouge_l": 0.5454545404958678
+        },
+        {
+            "input_text": "저는 커피를 좋아합니다.",
+            "translated_text": "I like coffee.",
+            "quality": "high",
+            "evaluated_quality": "high",
+            "confidence": 0.8,
+            "bleu": 0.013111910958201224,
+            "rouge_1": 0.0,
+            "rouge_2": 0.0,
+            "rouge_l": 0.0
+        },
+        {
+            "input_text": "이 제품은 고장이 자주 납니다.",
+            "translated_text": "This product often breaks down.",
+            "quality": "high",
+            "evaluated_quality": "low",
+            "confidence": 0.5,
+            "bleu": 0.06870636427700047,
+            "rouge_1": 0.0,
+            "rouge_2": 0.0,
+            "rouge_l": 0.0
+        },
+        {
+            "input_text": "책을 읽는 것을 좋아합니다.",
+            "translated_text": "I like reading books.",
+            "quality": "high",
+            "evaluated_quality": "low",
+            "confidence": 0.5,
+            "bleu": 0.007724896059301557,
+            "rouge_1": 0.10526315457063723,
+            "rouge_2": 0.0,
+            "rouge_l": 0.10526315457063723
+        },
+        {
+            "input_text": "그녀는 정말 친절한 사람이다.",
+            "translated_text": "She is a really kind person.",
+            "quality": "high",
+            "evaluated_quality": "high",
+            "confidence": 0.8,
+            "bleu": 0.15619699684601282,
+            "rouge_1": 0.5999999952,
+            "rouge_2": 0.24999999531250006,
+            "rouge_l": 0.5999999952
+        },
+        {
+            "input_text": "어제 쇼핑을 갔다.",
+            "translated_text": "I went shopping yesterday.",
+            "quality": "high",
+            "evaluated_quality": "high",
+            "confidence": 0.9,
+            "bleu": 0.10682175159905848,
+            "rouge_1": 0.0,
+            "rouge_2": 0.0,
+            "rouge_l": 0.0
+        },
+        {
+            "input_text": "그 영화는 재미없었다.",
+            "translated_text": "This movie was boring.",
+            "quality": "medium",
+            "evaluated_quality": "high",
+            "confidence": 0.9,
+            "bleu": 0.193576934939088,
+            "rouge_1": 0.4444444395061729,
+            "rouge_2": 0.0,
+            "rouge_l": 0.4444444395061729
+        },
+        {
+            "input_text": "이해가 안 돼요.",
+            "translated_text": "I don't understand.",
+            "quality": "high",
+            "evaluated_quality": "low",
+            "confidence": 0.2,
+            "bleu": 0.013111910958201224,
+            "rouge_1": 0.0,
+            "rouge_2": 0.0,
+            "rouge_l": 0.0
+        },
+        {
+            "input_text": "음식이 너무 늦게 나왔다.",
+            "translated_text": "The food too slow to come out.",
+            "quality": "low",
+            "evaluated_quality": "low",
+            "confidence": 0.7,
+            "bleu": 0.024159653599212298,
+            "rouge_1": 0.095238090793651,
+            "rouge_2": 0.0,
+            "rouge_l": 0.095238090793651
+        },
+        {
+            "input_text": "그녀는 나의 친한 친구다.",
+            "translated_text": "She is my close friend.",
+            "quality": "high",
+            "evaluated_quality": "high",
+            "confidence": 0.95,
+            "bleu": 1.0000000000000004,
+            "rouge_1": 0.999999995,
+            "rouge_2": 0.999999995,
+            "rouge_l": 0.999999995
+        }
+    ],
+    "overall_results": {
+        "accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 0.33,
+        "f1-score": 0.32,
+        "avg_confidence": 0.71,
+        "BLEU": 0.18,
+        "ROUGE-1": 0.28,
+        "ROUGE-2": 0.17,
+        "ROUGE-L": 0.28
+    }
+}
