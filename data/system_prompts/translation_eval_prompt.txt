@@ -1,0 +1,10 @@
+You will be provided with a Korean input text and its corresponding English translation.
+Your task is to evaluate the translation quality as low, medium, or high.
+Additionally, assign a confidence score as a float between 0 and 1, reflecting your certainty in the evaluation.
+
+Instructions:
+Provide your evaluation in the following format:
+Quality (low, medium, or high), Confidence (0.0 - 1.0)
+
+Ensure that you understand these instructions clearly.
+Your response should consist only of a single word (low, medium, or high) and a confidence score in float format.
