@@ -56,6 +56,24 @@ class TranslationQualityEvaluator(LLMBasedEvaluator):
             raise Exception(f"An error occurred during evaluation: {e}")
 
 
+    def translate(self, data: List[Dict[str, str]]) -> (Dict[str, List[float]], Dict[str, float]):
+        try:
+            data_df = pd.DataFrame(data)
+            references, translated_texts = [], []
+            for row in data_df.itertuples():
+                # Format the prompt for translation
+                prompt = self.prompt_manager.format_prompt('translation', [row.input_text])
+
+                # Perform inference
+                result = self.inference(prompt)
+
+            ind_extra_results, avg_extra_results = self.metrics_manager.compute_extra_metrics(references, translated_texts)
+            return ind_extra_results, avg_extra_results
+
+        except Exception as e:
+            raise Exception(f"An error occurred during translation or score computation: {e}")
+
+
     def get_quality_confidence(self, pattern: str, source_text: str) -> (str, float):
         try:
             match = find_pattern(pattern, source_text)
