@@ -23,6 +23,21 @@ class TranslationQualityEvaluator(LLMBasedEvaluator):
                 # Perform inference
                 result = self.inference(prompt)
                 
+                pattern = r'(?i)\b(low|medium|high)\b.*?\b([0-9]*\.[0-9]+)\b'
+                quality, confidence = self.get_quality_confidence(pattern, result)
+                ind_result = {
+                    "input_text": row.input_text,
+                    "translated_text": row.translated_text,
+                    "quality": row.quality,
+                    "evaluated_quality": quality,
+                    "confidence": confidence
+                }
+
+                y_true.append(quality)
+                confidence_scores.append(confidence)
+                individual_results.append(ind_result)
+
+                
             # Compute additional metrics if required
             if self.metrics_manager.enable_bleu_rouge:
                 pass
@@ -34,3 +49,30 @@ class TranslationQualityEvaluator(LLMBasedEvaluator):
 
         except Exception as e:
             raise Exception(f"An error occurred during evaluation: {e}")
+
+
+    def get_quality_confidence(self, pattern: str, source_text: str) -> (str, float):
+        try:
+            match = find_pattern(pattern, source_text)
+            if match:
+                if len(match.groups()) == 2:
+                    quality = match.group(1).lower()
+                    confidence = float(match.group(2))
+                elif float(match.group(1)): # only confidence score is generated
+                    quality = None
+                    confidence = float(match.group(1))
+                elif match.group(1).lower() in ('low', 'medium', 'high'): # only quality is generated
+                    quality = match.group(1).lower()
+                    confidence = 0.0
+                else:
+                    quality, confidence = None, 0.0
+            else:
+                quality, confidence = None, 0.0
+                print("No match found")
+
+            return quality, confidence
+
+        except KeyError:
+            raise ValueError(f"Invalid quality rating found in the source text: {match.groups()}")
+        except Exception as e:
+            raise Exception(f"An error occurred while extracting quality and confidence: {e}")
