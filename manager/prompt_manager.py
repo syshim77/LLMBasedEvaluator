@@ -2,6 +2,14 @@ from typing import List, Dict
 from settings.config import PROMPT_PATHS, TASK_REQUIREMENTS
 
 class PromptManager:
+    """
+    A class to manage and format prompts for various tasks.
+
+    Attributes:
+        prompt_paths (dict): A dictionary mapping task names to file paths containing prompts.
+        task_requirements (dict): A dictionary defining the number of required contents for each task.
+    """
+
     def __init__(self) -> None:
         """
         Initializes the PromptManager with prompt paths and task requirements.
@@ -10,6 +18,20 @@ class PromptManager:
         self.task_requirements = TASK_REQUIREMENTS
 
     def load_prompt(self, task: str) -> str:
+        """
+        Loads the system prompt for a specified task.
+
+        Parameters:
+            task (str): The task type ('review', 'translation', or 'translation_eval').
+
+        Returns:
+            str: The content of the system prompt file.
+
+        Raises:
+            ValueError: If the task is not recognized.
+            FileNotFoundError: If the prompt file does not exist.
+            IOError: If there is an issue reading the file.
+        """
         if task not in self.prompt_paths:
             raise ValueError(f"Unknown task: '{task}'. Valid tasks are: {list(self.prompt_paths.keys())}.")
         
@@ -23,8 +45,23 @@ class PromptManager:
         except IOError as e:
             raise IOError(f"An error occurred while reading the prompt file: {e}")
 
-
     def format_prompt(self, task: str, contents: List[str]) -> List[Dict[str, str]]:
+        """
+        Formats prompts based on the task and provided content.
+
+        Parameters:
+            task (str): The task type ('review', 'translation', or 'translation_eval').
+            contents (List[str]): List of input strings for the task.
+
+        Returns:
+            List[Dict[str, str]]: A formatted prompt as a list of dictionaries.
+
+        Raises:
+            ValueError: 
+                - If the task is not recognized.
+                - If no content is provided.
+                - If the number of contents exceeds the allowed maximum for the task.
+        """
         if not contents:
             raise ValueError("Please provide at least one content.")
         
