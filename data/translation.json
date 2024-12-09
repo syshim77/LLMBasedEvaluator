@@ -1,0 +1,10 @@
+[{"input_text": "오늘 날씨가 정말 좋다.", "translated_text": "The weather is really nice today.", "quality": "high"},
+{"input_text": "저는 커피를 좋아합니다.", "translated_text": "I like coffee.", "quality": "high"},
+{"input_text": "이 제품은 고장이 자주 납니다.", "translated_text": "This product often breaks down.", "quality": "high"},
+{"input_text": "책을 읽는 것을 좋아합니다.", "translated_text": "I like reading books.", "quality": "high"},
+{"input_text": "그녀는 정말 친절한 사람이다.", "translated_text": "She is a really kind person.", "quality": "high"},
+{"input_text": "어제 쇼핑을 갔다.", "translated_text": "I went shopping yesterday.", "quality": "high"},
+{"input_text": "그 영화는 재미없었다.", "translated_text": "This movie was boring.", "quality": "medium"},
+{"input_text": "이해가 안 돼요.", "translated_text": "I don't understand.", "quality": "high"},
+{"input_text": "음식이 너무 늦게 나왔다.", "translated_text": "The food too slow to come out.", "quality": "low"},
+{"input_text": "그녀는 나의 친한 친구다.", "translated_text": "She is my close friend.", "quality": "high"}]
