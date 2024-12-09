@@ -66,12 +66,30 @@ class TranslationQualityEvaluator(LLMBasedEvaluator):
 
                 # Perform inference
                 result = self.inference(prompt)
+                                
+                # Extract the translated text
+                pattern = r'^[^\n]+(?=\n|$)'
+                translation = self.get_translated_text(pattern, result)
+                references.append(translation)
+                translated_texts.append(row.translated_text)
 
             ind_extra_results, avg_extra_results = self.metrics_manager.compute_extra_metrics(references, translated_texts)
             return ind_extra_results, avg_extra_results
 
         except Exception as e:
             raise Exception(f"An error occurred during translation or score computation: {e}")
+
+
+    def get_translated_text(self, pattern: str, source_text: str) -> str:
+        try:
+            match = find_pattern(pattern, source_text)
+            if match:
+                return match.group(0)
+            else:
+                print("No valid pattern found in the source text.")
+                return None
+        except Exception as e:
+            raise Exception(f"An error occurred while extracting translated text: {e}")
 
 
     def get_quality_confidence(self, pattern: str, source_text: str) -> (str, float):
