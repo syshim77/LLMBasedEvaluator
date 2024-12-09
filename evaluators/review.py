@@ -9,7 +9,7 @@ class SentimentReviewEvaluator(LLMBasedEvaluator):
             raise ValueError("Input data for evaluation is empty.")
 
         try:
-            y_true, confidence_scores, individual_results, overall_results = [], [], [], []
+            y_true, confidence_scores, individual_results = [], [], []
             data_df = pd.DataFrame(data)
 
             if 'text' not in data_df.columns or 'label' not in data_df.columns:
@@ -30,6 +30,12 @@ class SentimentReviewEvaluator(LLMBasedEvaluator):
                 y_true.append(label)
                 confidence_scores.append(confidence)
                 individual_results.append(ind_result)
+
+            # Extract true labels and calculate metrics
+            y_pred = data_df['label'].values.tolist()
+            avg_confidence = calculate_avg(confidence_scores)
+            overall_results = self.metrics_manager.compute_core_metrics(y_true, y_pred, pos_label='positive')
+            overall_results["avg_confidence"] = avg_confidence
 
             return {
                 "individual_results": individual_results,
