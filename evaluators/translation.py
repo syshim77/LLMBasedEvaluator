@@ -37,6 +37,11 @@ class TranslationQualityEvaluator(LLMBasedEvaluator):
                 confidence_scores.append(confidence)
                 individual_results.append(ind_result)
 
+            # Compute core metrics
+            y_pred = data_df["quality"].values.tolist()
+            avg_confidence = calculate_avg(confidence_scores)
+            overall_results = self.metrics_manager.compute_core_metrics(y_true, y_pred, average="macro")
+            overall_results["avg_confidence"] = avg_confidence
                 
             # Compute additional metrics if required
             if self.metrics_manager.enable_bleu_rouge:
