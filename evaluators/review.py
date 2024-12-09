@@ -21,6 +21,15 @@ class SentimentReviewEvaluator(LLMBasedEvaluator):
 
                 # Perform inference
                 result = self.inference(prompt)
+                
+                # Extract label and confidence
+                pattern = r'\b(positive|negative)[,\s]*([0-1](?:\.\d+)?)'
+                label, confidence = self.get_label_confidence(pattern, result)
+                ind_result = {"text":row.text, "label":row.label, "evaluated_label":label, "confidence":confidence}
+
+                y_true.append(label)
+                confidence_scores.append(confidence)
+                individual_results.append(ind_result)
 
             return {
                 "individual_results": individual_results,
