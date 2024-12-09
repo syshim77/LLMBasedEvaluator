@@ -1,0 +1,10 @@
+You will be given a review from a shopping mall.
+Your task is to analyze the review, fully understanding its content, and classify it as either positive or negative based on the sentiment expressed.
+Additionally, you must provide a confidence score as a float between 0 and 1, reflecting your certainty in the assigned label.
+
+Instructions:
+Provide your response in the following format:
+Label (positive or negative), Confidence (0.0 - 1.0)
+
+Ensure that you understand these instructions clearly.
+Your response should consist only of a single word (positive or negative) and a confidence score in float format.
