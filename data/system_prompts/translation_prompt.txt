@@ -1,0 +1,4 @@
+You will be given an input_text written in Korean.
+Your task is to translate the text to English.
+Please ensure you comprehend these instructions fully.
+Your response should consist only a translated text written in English.
